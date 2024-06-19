@@ -43,4 +43,18 @@ public class Queues {
         }
         return data;
     }
+
+    public static void main(String[] args) {
+        Queues studentNumbers = new Queues();
+
+        studentNumbers.add(101190);
+        studentNumbers.add(111761);
+        studentNumbers.add(167027);
+
+        while (!studentNumbers.isEmpty()){
+            System.out.println(studentNumbers.remove());
+        }
+
+
+    }
 }
