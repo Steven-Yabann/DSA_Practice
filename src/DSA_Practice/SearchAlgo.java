@@ -1,4 +1,8 @@
 package DSA_Practice;
+//Yabann Steven
+//167027
+// ICS 2.1 E
+
 
 public class SearchAlgo {
     //Linear search
@@ -16,6 +20,11 @@ public class SearchAlgo {
 
     //Binary Search
     public static boolean binarySearch(int[] array, int x, int left, int right){
+        if (left > right){
+            System.out.println("Invalid index values");
+            return false;
+        }
+
         int mid = (left + right)/ 2;
 
         if (array[mid] == x){
@@ -31,9 +40,15 @@ public class SearchAlgo {
 
     //main method
     public static void main(String[] args) {
-        int[] lampHeights = {1, 2, 4, 5, 7, 9, 23, 65};
+        int[] lampHeights = {1, 2, 4, 5, 7, 9, 13, 20, 24};
 
         if (linearSearch(lampHeights, 4)){
+            System.out.println("Item found");
+        }else{
+            System.out.println("Item not found");
+        }
+
+        if (binarySearch(lampHeights, 1, lampHeights.length-1, 0)){
             System.out.println("Item found");
         }else{
             System.out.println("Item not found");
