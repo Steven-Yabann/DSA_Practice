@@ -6,6 +6,7 @@ package DSA_Practice;
 
 public class SearchAlgo {
     //Linear search
+    // linear search O(n)
     public static boolean linearSearch(int[] array, int x){
         int n = array.length;
 
@@ -19,6 +20,7 @@ public class SearchAlgo {
     }
 
     //Binary Search
+    // binary Search O(log(n))
     public static boolean binarySearch(int[] array, int x, int left, int right){
         if (left > right){
             System.out.println("Invalid index values");
