@@ -126,5 +126,33 @@ public class TreeStructure {
                 return (elements.get(size / 2 - 1) + elements.get(size / 2)) /2.0;
             }
         }
+
+        public static void main(String [] args) {
+            Node our_tree = new Node(10);
+
+            our_tree.add(8);
+            our_tree.add(4);
+            our_tree.add(2);
+            our_tree.add(6);
+            our_tree.add(10);
+            our_tree.add(9);
+            our_tree.add(12);
+
+            System.out.println("Pre Order");
+            our_tree.preOrder();
+
+            System.out.println("In Order");
+            our_tree.inOrder();
+
+            System.out.println("Post Order");
+            our_tree.postOrder();
+
+            System.out.println("Minimum Value: " + our_tree.findMin());
+            System.out.println("Maximum Value: " + our_tree.findMax());
+            System.out.println("Tree Height: " + our_tree.height());
+            System.out.println("Tree Depth: " + our_tree.depth());
+            System.out.println("Total Nodes: " + our_tree.countNodes());
+            System.out.println("Median Value: " + our_tree.findMedian());
+        }
     }
 }
