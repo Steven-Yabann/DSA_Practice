@@ -125,7 +125,6 @@ public class TreeStructure {
             } else {
                 return (elements.get(size / 2 - 1) + elements.get(size / 2)) /2.0;
             }
-
         }
     }
 }
