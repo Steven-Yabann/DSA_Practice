@@ -116,16 +116,14 @@ public class TreeStructure {
             return 1 + rightCount + leftCount;
         }
 
-        public double findMedian(){
-            ArrayList<Integer> elements = new ArrayList<>();
-            elements.sort((Comparator<? super Integer>) elements);
-            int size = elements.size();
-            if(size % 2 == 1){
-                return elements.get(size/2);
-            } else {
-                return (elements.get(size / 2 - 1) + elements.get(size / 2)) /2.0;
-            }
-        }
+//        public double findMedian(){
+//            ArrayList<Integer> elements = new ArrayList<>();
+//            if(size % 2 == 1){
+//                return elements.get(size/2);
+//            } else {
+//                return (elements.get(size / 2 - 1) + elements.get(size / 2)) /2.0;
+//            }
+//        }
 
         public static void main(String [] args) {
             Node our_tree = new Node(10);
@@ -152,7 +150,7 @@ public class TreeStructure {
             System.out.println("Tree Height: " + our_tree.height());
             System.out.println("Tree Depth: " + our_tree.depth());
             System.out.println("Total Nodes: " + our_tree.countNodes());
-            System.out.println("Median Value: " + our_tree.findMedian());
+//            System.out.println("Median Value: " + our_tree.findMedian());
         }
     }
 }
