@@ -32,13 +32,18 @@ public class Sort {
         for(int i = 1; i < n; i++){
             int key = array[i];
             int j = i - 1;
-            while()
+            while(j >= 0 && key < array[j]){
+                array[j + 1] = array[j];
+                j --;
+            }
+            array[j + 1] = key;
         }
     }
     public static void main(String[] args){
         int[] numbers = {45, 23, 78, 43, 12, 9};    //9 12 23 43 45 78
         long startTime = System.nanoTime();
-        bubbleSort(numbers);
+//        bubbleSort(numbers);
+        insertionSort(numbers);
         for (int i : numbers) {
             System.out.print(i + " ");
         }
