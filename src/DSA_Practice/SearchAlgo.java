@@ -22,12 +22,14 @@ public class SearchAlgo {
     //Binary Search
     // binary Search O(log(n))
     public static boolean binarySearch(int[] array, int x, int left, int right){
+        if (array == null || array.length == 0){
+            return false;
+        }
         if (left > right){
-            System.out.println("Invalid index values");
             return false;
         }
 
-        int mid = (left + right)/ 2;
+        int mid = (left + (right - left))/ 2;
 
         if (array[mid] == x){
             return true;
