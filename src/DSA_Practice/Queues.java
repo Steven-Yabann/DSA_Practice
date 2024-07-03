@@ -22,15 +22,15 @@ public class Queues {
     public void add(int data){
         Node node = new Node(data); // Create a new node
 
-        if (tail != null){          //Check if tail exists
-            tail.next = node;       //Assign new node to tail
+        if(isEmpty()){
+            head = node;
+        }else{
+            if(tail != null){
+                tail.next = node;
+            }
+            tail = node;
         }
 
-        tail = node;                //Reassign the tail
-
-        if(head == null){   //Check if head is empty
-            head = node;    //Assign new node to head
-        }
     }
 
     // Method 3: To leave the queue

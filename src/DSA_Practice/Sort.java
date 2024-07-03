@@ -30,16 +30,17 @@ public class Sort {
         int n = array.length;
 
         for(int i = 1; i < n; i++){
-            int key = array[i];
-            int j = i - 1;
-            while(j >= 0 && key < array[j]){
-                array[j + 1] = array[j];
-                j --;
+            int key = array[i];                         // 43
+            int j = i - 1;                              // 2
+            while(j >= 0 && key < array[j]){            // 43 < 78
+                array[j + 1] = array[j];                //78 = 78
+                j --;                                   //1
             }
             array[j + 1] = key;
         }
     }
     public static void main(String[] args){
+                    //  {23,45,78,43}
         int[] numbers = {45, 23, 78, 43, 12, 9};    //9 12 23 43 45 78
         long startTime = System.nanoTime();
 //        bubbleSort(numbers);
