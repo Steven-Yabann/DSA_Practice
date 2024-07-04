@@ -50,7 +50,7 @@ public class Graphs {
 
             if(!visited.contains(vertex)){
                 visited.add(vertex);
-                System.out.println(vertex + " ");
+                System.out.print(vertex + " ");
 
                 for(int i = 0; i < edgeCount; i++){
                     if(edge[i].src == vertex && !visited.contains(edge[i].dest)){
