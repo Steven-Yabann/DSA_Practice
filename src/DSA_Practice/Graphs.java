@@ -1,6 +1,10 @@
 package DSA_Practice;
 
+import org.junit.Test;
+
 import java.util.*;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class Graphs {
 
@@ -52,9 +56,10 @@ public class Graphs {
     }
 
     // Method to perform Depth-First Search (DFS)
-    public static void DFS(char start) {
+    public List<Character> DFS(char start) {
         List<Character> visited = new ArrayList<>();
         depthFirstSearch(start, visited);
+        return visited;
     }
 
     private static void depthFirstSearch(char vertex, List<Character> visited) {
@@ -72,22 +77,23 @@ public class Graphs {
 
 
     // Method to perform Depth-Limited Search (DLS)
-    public static void DLS(char start, int limit) {
-        List<Character> visited = new ArrayList<>();
-        depthFirstSearch(start, limit, visited);
+    public List<Character> DLS(char start, int limit) {
+        List<Character> visitedDLS = new ArrayList<>();
+        depthFirstSearch(start, limit, visitedDLS);
+        return visitedDLS;
     }
 
-    private static void depthFirstSearch(char vertex, int limit, List<Character> visited) {
-        if (limit > 0) {
-            limit--;
-            visited.add(vertex);
+    private static void depthFirstSearch(char vertex, int depth, List<Character> visitedDLS) {
+        if (depth > 0) {
+            depth--;
+            visitedDLS.add(vertex);
             System.out.print(vertex + " ");
 
             for (int i = 0; i < edgeCount; i++) {
-                if (edge[i].src == vertex && !visited.contains(edge[i].dest)) {
-                    depthFirstSearch(edge[i].dest, limit, visited);
-                } else if (edge[i].dest == vertex && !visited.contains(edge[i].src)) {
-                    depthFirstSearch(edge[i].src, limit, visited);
+                if (edge[i].src == vertex && !visitedDLS.contains(edge[i].dest)) {
+                    depthFirstSearch(edge[i].dest, depth, visitedDLS);
+                } else if (edge[i].dest == vertex && !visitedDLS.contains(edge[i].src)) {
+                    depthFirstSearch(edge[i].src, depth, visitedDLS);
                 }
             }
         }
@@ -100,7 +106,6 @@ public class Graphs {
         int noVertices = 6;
         int noEdges = 9;
         Graphs g = new Graphs(noVertices, noEdges);
-
         // Add edges
         g.addEdge('A', 'B', 5); // edge 1---2
         g.addEdge('A', 'C', 6); // edge 1---3
@@ -111,16 +116,41 @@ public class Graphs {
         g.addEdge('C', 'E', 6); // edge 3---5
         g.addEdge('D', 'E', 2); // edge 4---5
         g.addEdge('C', 'F', 8); // edge 3---6
-
         // Print the graph
+        System.out.println("Graph example");
         g.printGraph();
 
         // Perform DFS
-        System.out.println("Depth First Search operation being performed: ");
-        DFS('A');
+        System.out.println("\nDepth First Search operation being performed: ");
+        g.DFS('A');
 
         // Perform DLS
         System.out.println("\nDepth Limited Search operation being performed: ");
-        DLS('A', 3);
+        g.DLS('F', 2);
+        System.out.println("\n--------------------------------------");
+
+
+        //Test case Graph
+        Graphs TestGraphs = new Graphs(4, 4);
+        TestGraphs.addEdge('A', 'B', 3);
+        TestGraphs.addEdge('B', 'C', 7);
+        TestGraphs.addEdge('C', 'D', 1);
+
+        //Print out graph
+        System.out.println("\nTest Graph: ");
+        TestGraphs.printGraph();
+
+        //Test case for DFS
+        System.out.println("\nTest case for DFS: ");
+        List<Character> expectedDFS = Arrays.asList('A', 'B', 'C', 'D');
+        List<Character> resultDFS = TestGraphs.DFS('A');
+        System.out.println("\nTest case result: " + resultDFS.equals(expectedDFS));
+
+
+        //Test case for DLS
+        System.out.println("\nTest case for DLS");
+        List<Character> expectedDLS = Arrays.asList('D', 'C');
+        List<Character> resultsDLS = TestGraphs.DLS('D', 2);
+        System.out.println("\nTest case result: " + resultsDLS.equals(expectedDLS));
     }
 }
